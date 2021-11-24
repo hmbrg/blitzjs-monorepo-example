@@ -1,5 +1,5 @@
+import GithubIcon from '@agracheck/ui-lib/icons/social/github.svg';
 import styled from '@emotion/styled';
-import GithubIcon from '@your-org/ui-lib/icons/social/github.svg';
 import type { FC } from 'react';
 import FooterWaves from '@/public/images/layout/footer-waves.svg';
 

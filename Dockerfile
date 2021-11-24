@@ -39,12 +39,12 @@ COPY .yarn/ ./.yarn/
 
 RUN --mount=type=bind,target=/docker-context \
     rsync -amv --delete \
-          --exclude='node_modules' \
-          --exclude='*/node_modules' \
-          --include='package.json' \
-          --include='schema.prisma' \
-          --include='*/' --exclude='*' \
-          /docker-context/ /workspace-install/;
+    --exclude='node_modules' \
+    --exclude='*/node_modules' \
+    --include='package.json' \
+    --include='schema.prisma' \
+    --include='*/' --exclude='*' \
+    /docker-context/ /workspace-install/;
 
 #
 # To speed up installations, we override the default yarn cache folder
@@ -77,12 +77,12 @@ WORKDIR /app
 COPY . .
 COPY --from=workspaces-full-install /workspace-install ./
 
-RUN NEXTJS_IGNORE_ESLINT=1 yarn workspace web-app build
+RUN NEXTJS_IGNORE_ESLINT=1 yarn workspace reference-web-app build
 
 RUN --mount=type=cache,target=/root/.yarn-cache \
     SKIP_POSTINSTALL=1 \
     YARN_CACHE_FOLDER=/root/.yarn-cache \
-    yarn workspaces focus web-app --production
+    yarn workspaces focus reference-web-app --production
 
 
 # For production
@@ -95,10 +95,10 @@ ENV NODE_ENV production
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
-COPY --from=builder /app/apps/web-app/next.config.js ./apps/web-app/
-COPY --from=builder /app/apps/web-app/package.json ./apps/web-app/
-COPY --from=builder /app/apps/web-app/public ./apps/web-app/public
-COPY --from=builder --chown=nextjs:nodejs /app/apps/web-app/.next ./apps/web-app/.next
+COPY --from=builder /app/apps/reference-web-app/next.config.js ./apps/reference-web-app/
+COPY --from=builder /app/apps/reference-web-app/package.json ./apps/reference-web-app/
+COPY --from=builder /app/apps/reference-web-app/public ./apps/reference-web-app/public
+COPY --from=builder --chown=nextjs:nodejs /app/apps/reference-web-app/.next ./apps/reference-web-app/.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
@@ -108,11 +108,11 @@ EXPOSE 8000
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
-CMD ["./node_modules/.bin/next", "apps/web-app/", "-p", "8000"]
+CMD ["./node_modules/.bin/next", "apps/reference-web-app/", "-p", "8000"]
 
 
 # For development
-FROM node:${NODE_VERSION}-alpine AS web-app-dev
+FROM node:${NODE_VERSION}-alpine AS reference-web-app-dev
 ENV NODE_ENV=development
 
 WORKDIR /app
@@ -120,5 +120,5 @@ WORKDIR /app
 COPY --from=workspaces-full-install /workspace-install ./
 
 EXPOSE 8000
-CMD ["yarn", "workspace", "web-app", "dev", "-p", "8000"]
+CMD ["yarn", "workspace", "reference-web-app", "dev", "-p", "8000"]
 

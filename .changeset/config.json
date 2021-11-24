@@ -1,6 +1,9 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@1.6.0/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "belgattitude/nextjs-monorepo-example" }],
+  "changelog": [
+    "@changesets/changelog-github",
+    { "repo": "agracheck/agracheck" }
+  ],
   "commit": false,
   "linked": [],
   "access": "private",

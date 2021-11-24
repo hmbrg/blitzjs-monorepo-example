@@ -22,14 +22,14 @@ BUILTKIT_PROGRESS=plain DOCKER_BUILDKIT=1 docker-compose build --force-rm --prog
 ### Start
 
 ```bash
-DOCKER_BUILDKIT=1 docker-compose up --build web-app-dev
+DOCKER_BUILDKIT=1 docker-compose up --build reference-web-app-dev
 ```
 
 ### Debugging
 
 ```bash
 # Rebuild the image
-DOCKER_BUILDKIT=1 docker-compose build --force-rm web-app-dev
+DOCKER_BUILDKIT=1 docker-compose build --force-rm reference-web-app-dev
 # Shell into the container
-DOCKER_BUILDKIT=1 docker-compose run --rm web-app-dev sh
+DOCKER_BUILDKIT=1 docker-compose run --rm reference-web-app-dev sh
 ```

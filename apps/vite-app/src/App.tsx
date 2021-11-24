@@ -1,5 +1,5 @@
-import { sayHello } from '@your-org/core-lib';
-import { Message } from '@your-org/ui-lib';
+import { sayHello } from '@agracheck/core-lib';
+import { Message } from '@agracheck/ui-lib';
 import { useState } from 'react';
 import { Link, Route } from 'wouter';
 
@@ -14,7 +14,7 @@ function App() {
       <Route path="/">
         <main className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>{`${sayHello('Hello Vite')} from @your-org/core-lib`}</p>
+          <p>{`${sayHello('Hello Vite')} from @agracheck/core-lib`}</p>
           <p>
             <button
               type="button"
@@ -23,7 +23,7 @@ function App() {
             </button>
           </p>
           <p>
-            <Message message={'React component from @your-org/ui-lib'} />
+            <Message message={'React component from @agracheck/ui-lib'} />
           </p>
           <p>
             <Link href="/about">

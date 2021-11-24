@@ -3,8 +3,8 @@
  * @link https://nextjs.org/docs/advanced-features/custom-error-page
  */
 
+import { isNonEmptyString } from '@agracheck/core-lib';
 import * as Sentry from '@sentry/node';
-import { isNonEmptyString } from '@your-org/core-lib';
 import type { NextPage, NextPageContext } from 'next';
 import NextErrorComponent from 'next/error';
 import type { ErrorProps } from 'next/error';

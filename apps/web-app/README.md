@@ -1,18 +1,18 @@
-# The web-app
+# The reference-web-app
 
 <p align="left">
   <a aria-label="Build" href="https://github.com/belgattitude/nextjs-monorepo-example/actions?query=workflow%3ACI">
-    <img alt="build" src="https://img.shields.io/github/workflow/status/belgattitude/nextjs-monorepo-example/CI-web-app/main?label=CI&logo=github&style=flat-quare&labelColor=000000" />
+    <img alt="build" src="https://img.shields.io/github/workflow/status/belgattitude/nextjs-monorepo-example/CI-reference-web-app/main?label=CI&logo=github&style=flat-quare&labelColor=000000" />
   </a>
 </p>
 
 ## Intro
 
-Basic demo nextjs web-app, part of the [nextjs-monorepo-example](https://github.com/belgattitude/nextjs-monorepo-example).
+Basic demo nextjs reference-web-app, part of the [nextjs-monorepo-example](https://github.com/belgattitude/nextjs-monorepo-example).
 
-- Homepage: [Demo/Vercel english](https://nextjs-monorepo-example-web-app.vercel.app/en/home) | [Demo/vercel french](https://nextjs-monorepo-example-web-app.vercel.app/fr/home)
-- API: [Demo rest/Vercel](https://nextjs-monorepo-example-web-app.vercel.app/api/rest/post/1)
-- [Changelog](https://github.com/belgattitude/nextjs-monorepo-example/blob/main/apps/web-app/CHANGELOG.md)
+- Homepage: [Demo/Vercel english](https://nextjs-monorepo-example-reference-web-app.vercel.app/en/home) | [Demo/vercel french](https://nextjs-monorepo-example-reference-web-app.vercel.app/fr/home)
+- API: [Demo rest/Vercel](https://nextjs-monorepo-example-reference-web-app.vercel.app/api/rest/post/1)
+- [Changelog](https://github.com/belgattitude/nextjs-monorepo-example/blob/main/apps/reference-web-app/CHANGELOG.md)
 
 ## Quick start
 
@@ -21,7 +21,7 @@ Basic demo nextjs web-app, part of the [nextjs-monorepo-example](https://github.
 
 ```bash
 $ yarn install
-$ cd apps/web-app
+$ cd apps/reference-web-app
 $ yarn dev
 ```
 
@@ -107,7 +107,7 @@ The keys autocompletion and typechecks are enabled in [./src/typings/react-i18ne
 ```
 .
 ├── apps
-│   └── web-app
+│   └── reference-web-app
 │       ├── public/
 │       │   └── locales/
 │       ├── src/

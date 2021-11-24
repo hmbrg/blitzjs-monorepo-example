@@ -2,7 +2,7 @@
 
 <p align="left">
   <a aria-label="Build" href="https://github.com/belgattitude/nextjs-monorepo-example/actions?query=workflow%3ACI">
-    <img alt="build" src="https://img.shields.io/github/workflow/status/belgattitude/nextjs-monorepo-example/CI-web-app/main?label=CI&logo=github&style=flat-quare&labelColor=000000" />
+    <img alt="build" src="https://img.shields.io/github/workflow/status/belgattitude/nextjs-monorepo-example/CI-reference-web-app/main?label=CI&logo=github&style=flat-quare&labelColor=000000" />
   </a>
 </p>
 
@@ -73,8 +73,8 @@ yarn prisma:db:seed
 ## DB type generation
 
 Create or update the types. This is generally automatically done in
-a postinstall from any app, see script section of [../../apps/web-app/package.json](../../apps/web-app/package.json)
-or try it out with `yarn workspace web-app postinstall`
+a postinstall from any app, see script section of [../../apps/reference-web-app/package.json](../../apps/reference-web-app/package.json)
+or try it out with `yarn workspace reference-web-app postinstall`
 
 ```bash
 yarn prisma generate

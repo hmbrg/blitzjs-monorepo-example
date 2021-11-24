@@ -1,4 +1,4 @@
-import { sayHello } from '@your-org/core-lib';
+import { sayHello } from '@agracheck/core-lib';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function ApiHelloRoute(

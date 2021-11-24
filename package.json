@@ -2,10 +2,10 @@
   "name": "nextjs-monorepo-example",
   "license": "MIT",
   "private": true,
-  "homepage": "https://github.com/belgattitude/nextjs-monorepo-example",
+  "homepage": "https://github.com/agracheck/agracheck",
   "repository": {
     "type": "git",
-    "url": "https://github.com/belgattitude/nextjs-monorepo-example"
+    "url": "https://github.com/agracheck/agracheck"
   },
   "author": {
     "name": "Vanvelthem Sébastien",
@@ -39,12 +39,12 @@
     "share:static:hardlink": "yarn workspaces foreach -pv --include '*-app' run share:static:hardlink",
     "apps:build": "yarn workspaces foreach -ptv --include '*-app' run build",
     "apps:clean": "yarn workspaces foreach -ptv --include '*-app' run clean",
-    "packages:build": "yarn workspaces foreach -ptv --include '@your-org/*' run build",
-    "packages:test:unit": "yarn workspaces foreach -ptv --include '@your-org/*' run test:unit",
-    "packages:ci-test:unit": "yarn workspaces foreach -tv --include '@your-org/*' run ci-test:unit",
-    "packages:lint": "yarn workspaces foreach -ptv --include '@your-org/*' run lint",
-    "packages:typecheck": "yarn workspaces foreach -ptv --include '@your-org/*' run typecheck",
-    "packages:clean": "yarn workspaces foreach -ptv --include '@your-org/*' run clean",
+    "packages:build": "yarn workspaces foreach -ptv --include '@agracheck/*' run build",
+    "packages:test:unit": "yarn workspaces foreach -ptv --include '@agracheck/*' run test:unit",
+    "packages:ci-test:unit": "yarn workspaces foreach -tv --include '@agracheck/*' run ci-test:unit",
+    "packages:lint": "yarn workspaces foreach -ptv --include '@agracheck/*' run lint",
+    "packages:typecheck": "yarn workspaces foreach -ptv --include '@agracheck/*' run typecheck",
+    "packages:clean": "yarn workspaces foreach -ptv --include '@agracheck/*' run clean",
     "postinstall": "is-ci || yarn husky install",
     "docker:up": "docker-compose up -d",
     "docker:up:main-db": "docker-compose up -d main-db",

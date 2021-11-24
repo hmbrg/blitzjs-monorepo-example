@@ -1,4 +1,4 @@
-name: CI-web-app
+name: CI-reference-web-app
 
 on:
   push:
@@ -6,16 +6,15 @@ on:
       - dev
       - main
     paths:
-      - "apps/web-app/**"
-      - "packages/**"
-      - "package.json"
-      - "yarn.lock"
-      - ".yarnrc.yml"
-      - "*.base.json"
-      - "*.base.js"
-      - ".prettier*.*"
-      - ".github/workflows/**"
-
+      - 'apps/reference-web-app/**'
+      - 'packages/**'
+      - 'package.json'
+      - 'yarn.lock'
+      - '.yarnrc.yml'
+      - '*.base.json'
+      - '*.base.js'
+      - '.prettier*.*'
+      - '.github/workflows/**'
 
   pull_request:
     types:
@@ -26,15 +25,15 @@ on:
     #   Only consider those files/paths to trigger the github action
     #   to prevent unnecessary builds.
     paths:
-      - "apps/web-app/**"
-      - "packages/**"
-      - "package.json"
-      - "yarn.lock"
-      - ".yarnrc.yml"
-      - "*.base.json"
-      - "*.base.js"
-      - ".prettier*.*"
-      - ".github/workflows/**"
+      - 'apps/reference-web-app/**'
+      - 'packages/**'
+      - 'package.json'
+      - 'yarn.lock'
+      - '.yarnrc.yml'
+      - '*.base.json'
+      - '*.base.js'
+      - '.prettier*.*'
+      - '.github/workflows/**'
 
 jobs:
   test:
@@ -66,40 +65,40 @@ jobs:
             yarn-cache-folder-
 
       # see https://github.com/vercel/next.js/pull/27362
-      - name: Restore nextjs build web-app from cache
+      - name: Restore nextjs build reference-web-app from cache
         uses: actions/cache@v2
         with:
           path: |
-            ${{ github.workspace }}/apps/web-app/.next/cache
+            ${{ github.workspace }}/apps/reference-web-app/.next/cache
             ${{ github.workspace }}/.cache
             ${{ github.workspace }}/**/tsconfig.tsbuildinfo
             ${{ github.workspace }}/**/.eslintcache
 
-          key: ${{ runner.os }}-nextjs-web-app-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('apps/web-app/src/**.[jt]sx?', 'apps/web-app/src/**.json') }}
+          key: ${{ runner.os }}-nextjs-reference-web-app-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('apps/reference-web-app/src/**.[jt]sx?', 'apps/reference-web-app/src/**.json') }}
           restore-keys: |
-               ${{ runner.os }}-nextjs-web-app-${{ hashFiles('**/yarn.lock') }}-
+            ${{ runner.os }}-nextjs-reference-web-app-${{ hashFiles('**/yarn.lock') }}-
 
       - name: Install dependencies
         run: |
           yarn install --immutable
 
       - name: Typecheck
-        working-directory: apps/web-app
+        working-directory: apps/reference-web-app
         run: |
           yarn typecheck
 
       - name: Linter
-        working-directory: apps/web-app
+        working-directory: apps/reference-web-app
         run: |
           yarn lint --cache
 
       - name: Unit tests
-        working-directory: apps/web-app
+        working-directory: apps/reference-web-app
         run: |
           yarn ci-test:unit
 
-      - name: Build web-app
-        working-directory: apps/web-app
+      - name: Build reference-web-app
+        working-directory: apps/reference-web-app
         run: |
           yarn build
         env:
@@ -117,7 +116,6 @@ jobs:
           NEXT_SENTRY_DRY_RUN: 1
 
       - name: Check bundle size
-        working-directory: apps/web-app
+        working-directory: apps/reference-web-app
         run: |
           yarn bundle:check-size
-

@@ -16,22 +16,22 @@ services:
   builder:
     profiles:
       - donotstart
-    container_name: nextjs-monorepo-web-app_dev-build
+    container_name: nextjs-monorepo-reference-web-app_dev-build
     stdin_open: true
     build:
       context: ./
       dockerfile: Dockerfile
       target: builder
 
-  web-app-dev:
-    # DOCKER_BUILDKIT=1 docker-compose up web-app-dev
+  reference-web-app-dev:
+    # DOCKER_BUILDKIT=1 docker-compose up reference-web-app-dev
     profiles:
       - donotstart
-    container_name: nextjs-monorepo-web-app_dev
+    container_name: nextjs-monorepo-reference-web-app_dev
     build:
       context: ./
       dockerfile: Dockerfile
-      target: web-app-dev
+      target: reference-web-app-dev
     stdin_open: true
     ports:
       - target: 8000
@@ -39,7 +39,7 @@ services:
         protocol: tcp
     volumes:
       - .:/app/
-      - excluded_build:/app/apps/web-app/.next/
+      - excluded_build:/app/apps/reference-web-app/.next/
     depends_on:
       - main-db
 

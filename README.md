@@ -4,7 +4,7 @@
 </div>
 <p align="center">
   <a aria-label="Build" href="https://github.com/belgattitude/nextjs-monorepo-example/actions?query=workflow%3ACI">
-    <img alt="build" src="https://img.shields.io/github/workflow/status/belgattitude/nextjs-monorepo-example/CI-web-app/main?label=CI&logo=github&style=flat-quare&labelColor=000000" />
+    <img alt="build" src="https://img.shields.io/github/workflow/status/belgattitude/nextjs-monorepo-example/CI-reference-web-app/main?label=CI&logo=github&style=flat-quare&labelColor=000000" />
   </a>
   <a aria-label="Codefactor grade" href=https://www.codefactor.io/repository/github/belgattitude/nextjs-monorepo-example">
     <img alt="Codefactor" src="https://img.shields.io/codefactor/grade/github/belgattitude/nextjs-monorepo-example?label=Codefactor&logo=codefactor&style=flat-quare&labelColor=000000" />
@@ -50,7 +50,7 @@ Useful to
 ├── apps
 │   ├── blog-app
 │   ├── vite-app
-│   └── web-app
+│   └── reference-web-app
 └── packages
     ├── core-lib
     ├── db-main-prisma
@@ -59,7 +59,7 @@ Useful to
 
 #### Example apps
 
-- [apps/web-app](./apps/web-app): SSR, i18n, GraphQL, Rest. [README](./apps/web-app/README.md) | [DEMO/Vercel](https://nextjs-monorepo-example-web-app.vercel.app) | [CHANGELOG](./apps/web-app/CHANGELOG.md)
+- [apps/reference-web-app](./apps/reference-web-app): SSR, i18n, GraphQL, Rest. [README](./apps/reference-web-app/README.md) | [DEMO/Vercel](https://nextjs-monorepo-example-reference-web-app.vercel.app) | [CHANGELOG](./apps/reference-web-app/CHANGELOG.md)
 - [apps/blog-app](./apps/blog-app): SSG. [README](./apps/blog-app/README.md) | [DEMO/Vercel](https://nextjs-monorepo-example-blog-app.vercel.app) | [CHANGELOG](./apps/blog-app/CHANGELOG.md)
 - [apps/vite-app](./apps/vite-app): Basic vite-app. [README](./apps/vite-app/README.md) | [DEMO/Vercel](https://nextjs-monorepo-example-vite-app.vercel.app) | [CHANGELOG](./apps/vite-app/CHANGELOG.md)
 
@@ -67,9 +67,9 @@ Useful to
 
 #### Example shared packages
 
-- [packages/core-lib](./packages/core-lib): used by web-app and blog-app, publishable. [README](./packages/core-lib/README.md) | [CHANGELOG](./packages/core-lib/CHANGELOG.md)
-- [packages/db-main-prisma](./packages/db-main-prisma): used by web-app. [README](./packages/db-main-prisma/README.md) | [CHANGELOG](./packages/db-main-prisma/CHANGELOG.md)
-- [packages/ui-lib](./packages/ui-lib): used by web-app and blog-app, publishable. [README](./packages/ui-lib/README.md) | [CHANGELOG](./packages/ui-lib/CHANGELOG.md)
+- [packages/core-lib](./packages/core-lib): used by reference-web-app and blog-app, publishable. [README](./packages/core-lib/README.md) | [CHANGELOG](./packages/core-lib/CHANGELOG.md)
+- [packages/db-main-prisma](./packages/db-main-prisma): used by reference-web-app. [README](./packages/db-main-prisma/README.md) | [CHANGELOG](./packages/db-main-prisma/CHANGELOG.md)
+- [packages/ui-lib](./packages/ui-lib): used by reference-web-app and blog-app, publishable. [README](./packages/ui-lib/README.md) | [CHANGELOG](./packages/ui-lib/CHANGELOG.md)
 
 > Apps can depend on packages, packages can depend on each others...
 
@@ -102,7 +102,7 @@ If needed static resources like **locales**, **images**,... can be shared by usi
 │   │   ├── package.json         (define package workspace:package deps)
 │   │   └── tsconfig.json        (define path to packages)
 │   │
-│   └── web-app                  (NextJS app with api-routes)
+│   └── reference-web-app                  (NextJS app with api-routes)
 │       ├── public/
 │       │   ├── shared-assets/   (possible symlink to global assets)
 │       │   └── shared-locales/  (possible symlink to global locales)
@@ -260,7 +260,7 @@ cd apps/my-app
 yarn add @your-org/magnificent-poney@'workspace:*'
 ```
 
-Inspiration can be found in [apps/web-app/package.json](./apps/web-app/package.json).
+Inspiration can be found in [apps/reference-web-app/package.json](./apps/reference-web-app/package.json).
 
 <details>
 <summary>package.json</summary>
@@ -281,7 +281,7 @@ Inspiration can be found in [apps/web-app/package.json](./apps/web-app/package.j
 Then add a typescript path alias in the app tsconfig.json. This
 will allow you to import it directly (no build needed)
 
-Inspiration can be found in [apps/web-app/tsconfig.json](./apps/web-app/tsconfig.json).
+Inspiration can be found in [apps/reference-web-app/tsconfig.json](./apps/reference-web-app/tsconfig.json).
 
 <details>
   <summary>Example of tsonfig.json</summary>
@@ -447,7 +447,7 @@ They are based on the excellent [npm-check-updates](https://github.com/raineorsh
 ### 5.1 Linters
 
 An example of base eslint configuration can be found in [./.eslint.base.js](./.eslintrc.base.js), apps
-and packages extends it in their own root folder, as an example see [./apps/web-app/.eslintrc.js](./apps/web-app/.eslintrc.js).
+and packages extends it in their own root folder, as an example see [./apps/reference-web-app/.eslintrc.js](./apps/reference-web-app/.eslintrc.js).
 Prettier is included in eslint configuration as well as [eslint-config-next](https://nextjs.org/docs/basic-features/eslint) for nextjs apps.
 
 For code complexity and deeper code analysis [sonarjs plugin](https://github.com/SonarSource/eslint-plugin-sonarjs) is activated.
@@ -461,7 +461,7 @@ that lint and prettier are applied automatically on commit and/or pushes.
 
 Tests relies on ts-jest with support for typescript path aliases. React-testing-library is enabled
 whenever react is involved. Configuration lives in the root folder of each apps/packages. As an
-example see [./apps/web-app/jest.config.js](./apps/web-app/jest.config.js).
+example see [./apps/reference-web-app/jest.config.js](./apps/reference-web-app/jest.config.js).
 
 ### 5.4 CI
 
@@ -473,7 +473,7 @@ By default, they will ensure that
 - You don't have linter / code-style errors.
 - Your test suite is successful.
 - Your apps (nextjs) or packages can be successfully built.
-- Basic size-limit example in web-app.
+- Basic size-limit example in reference-web-app.
 
 Each of those steps can be opted-out.
 
@@ -495,13 +495,13 @@ To ensure decent performance, those features are present in the example actions:
   >    - ".eslintrc.base.json"
   >    - ".eslintignore"
   > ```
-                        
+
 ## 6. Editor support
-                        
+
 ### 6.1 VSCode
 
 The ESLint plugin requires that the `eslint.workingDirectories` setting is set:
-                        
+
 ```
 "eslint.workingDirectories": [
     {
@@ -512,6 +512,7 @@ The ESLint plugin requires that the `eslint.workingDirectories` setting is set:
     }
 ],
 ```
+
 More info [here](https://github.com/microsoft/vscode-eslint#mono-repository-setup)
 
 ## 7. Deploy
