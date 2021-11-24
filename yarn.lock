@@ -13971,9 +13971,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reference-web-app@workspace:apps/web-app":
+"reference-web-app@workspace:apps/reference-web-app":
   version: 0.0.0-use.local
-  resolution: "reference-web-app@workspace:apps/web-app"
+  resolution: "reference-web-app@workspace:apps/reference-web-app"
   dependencies:
     "@agracheck/core-lib": "workspace:*"
     "@agracheck/db-main-prisma": "workspace:*"
