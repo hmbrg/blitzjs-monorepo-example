@@ -81,6 +81,8 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install --immutable
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
       - name: Typecheck
         working-directory: apps/reference-web-app
@@ -119,3 +121,20 @@ jobs:
         working-directory: apps/reference-web-app
         run: |
           yarn bundle:check-size
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: E2E run web-app playwright tests
+        working-directory: apps/reference-web-app
+        run: |
+          xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- yarn test:e2e
+        env:
+          E2E_SKIP_NEXTJS_BUILD: 1
+          CI: 1
+
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: web-app-playwright-test-results
+          path: apps/reference-web-app/e2e/.out
